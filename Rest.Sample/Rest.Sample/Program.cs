@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Owin.Hosting;
 
 namespace Rest.Sample
 {
@@ -10,6 +7,15 @@ namespace Rest.Sample
     {
         static void Main(string[] args)
         {
+            string baseAddress = "http://localhost:8000/";
+
+            using (var server = new Server(baseAddress))
+            {
+                server.Start();
+                Console.WriteLine($"Server {baseAddress} runing...");
+                Console.ReadLine();
+                server.Stop();
+            }
         }
     }
 }
